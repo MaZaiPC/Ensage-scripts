@@ -1,5 +1,5 @@
 --<<Visage helper - Auto Soul Assumption and Stone Form of familiars>>
--- Made by Staskkk.
+-- Made by Staskkk. Reworked.
 
 require("libs.Utils")
 
