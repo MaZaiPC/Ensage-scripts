@@ -94,9 +94,9 @@ function Main(tick)
 							end
 						end
 						if Q and Q:CanBeCasted() and me:CanCast() and distance <= 500 and not me:DoesHaveModifier("modifier_tusk_snowball_movement") then
-							local CP = blink:FindCastPoint()
-							local delay = ((500-Animations.getDuration(blink)*1000)+CP*1000+client.latency+me:GetTurnTime(victim)*1000)
-							local speed = blink:GetSpecialData("blink_range")
+							local CP = Q:FindCastPoint()
+							local delay = ((500-Animations.getDuration(Q)*1000)+CP*1000+client.latency+me:GetTurnTime(victim)*1000)
+							local speed = Q:GetSpecialData("blink_range")
 							local xyz = SkillShot.SkillShotXYZ(me,victim,delay,speed)
 							table.insert(castQueue,{1000+math.ceil(Q:FindCastPoint()*1000),Q,xyz})
 						end
@@ -153,7 +153,7 @@ function Main(tick)
 			end
 		elseif tick > sleep[2] then
 			if victim then
-				if victim.visible then
+				if victim.visible and not me:DoesHaveModifier("modifier_tusk_snowball_movement") then
 					local xyz = SkillShot.PredictedXYZ(victim,me:GetTurnTime(victim)*1000+client.latency+500)
 					me:Move(xyz)
 				else
