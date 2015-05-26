@@ -6,3 +6,4 @@ Slardar.lua               |
 Tinker_Push_Tools.lua     | 
 Tusk.lua                  |
 Visage_Helper_Rework.lua  | 
+DooM.lua				  |
