@@ -5,6 +5,8 @@ local yy = 607
 local move = false
 local activate = false
 local sayTo = "say_team "
+
+local ShiftEnter = {16,13}
 --1
 rec[1] = drawMgr:CreateRect(5*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/macro/XY"))
 rec[2] = drawMgr:CreateRect(25*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/queenofpain"))
@@ -66,6 +68,13 @@ function Tick(tick)
                           xx = client.mouseScreenPosition.x - 5*rate - 25 yy = client.mouseScreenPosition.y - 60*rate - 12
                           Clear()                          
                          end
+             	         if IsKeysDown(ShiftEnter) then
+						  sayTo = "say "
+						  rec[46].textureId = drawMgr:GetTextureId("NyanUI/other/Active_Deny")
+						 elseif IsKeyDown(13) and not IsKeyDown(16) and not rec[46].visible == true then
+						  sayTo = "say_team "
+						  rec[46].textureId = drawMgr:GetTextureId("NyanUI/other/Passive_Deny")
+						 end
 end
 
 function Key(msg,code)                         
@@ -196,6 +205,39 @@ function IsMouseOn(obj)
                          local my = client.mouseScreenPosition.y
                          return mx > obj.x and mx <= obj.x + obj.w and my > obj.y and my <= obj.y + obj.h
 end
+
+-- From Utils lib
+function IsKeysDown(key_table,orCheck)
+	smartAssert(GetType(key_table) == "table", debug.getinfo(1, "n").name..": Invalid Key Table")
+	if not orCheck then orCheck = false end
+    for i,v in ipairs(key_table) do
+    	local bool = nil
+    	if v >= 0 then
+    		bool = IsKeyDown(v)
+    	else
+			bool = not IsKeyDown(-v)
+    	end
+        if (not orCheck and not bool) or (orCheck and bool) then
+                return bool
+    	end
+    end
+    return not orCheck
+end
+
+function smartAssert(condition, ...)
+	if not condition then
+		if next({...}) then
+			local s,r = pcall(function (...) return(string.format(...)) end, ...)
+			if s then
+				print(debug.traceback())
+            			error("assertion failed!: " .. r, 2)
+         		end
+      		end
+		print(debug.traceback())
+		error("assertion failed!", 2)
+	end
+end
+-- From Utils lib END
 
 function SaveGUIConfig()
                          local file = io.open(SCRIPT_PATH.."/config/EmoticonsConfig.txt", "w+")
