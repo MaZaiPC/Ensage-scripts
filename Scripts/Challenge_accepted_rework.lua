@@ -403,6 +403,48 @@ end
 
 function IsAllCasted()
 	if cdcheck then
+		-- ➜ Madness cd check
+		if item[10] then
+			if item[10]:CanBeCasted() and me.mana > skill[3].manacost then
+				return false
+			end
+		end
+		-- ➜ Medallion of courage cd check
+		if item[9] then
+			if item[9].state == LuaEntityItem.STATE_READY and item[9]:CanBeCasted() and me.mana > skill[3].manacost then
+				return false
+			end
+		end
+		-- ➜ Halberd cd check
+		if item[8] then
+			if item[8].state == LuaEntityItem.STATE_READY and item[8]:CanBeCasted() and me.mana > skill[3].manacost then
+				return false
+			end
+		end
+		-- ➜ Satanic cd check
+		if item[12] then
+			if item[12].state == LuaEntityItem.STATE_READY and item[12]:CanBeCasted() and me.health < (me.maxHealth * 0.5) and me.mana > skill[3].manacost then
+				return false
+			end
+		end
+		-- ➜ Armlet cd check
+		if item[3] then
+			if item[3]:CanBeCasted() and not item[1] and SleepCheck("Armlet_use_delay") then
+				return false
+			end
+		end
+		-- ➜ Urn of Shadows cd check
+		if item[11] then
+			if item[11]:CanBeCasted() and me.mana > skill[3].manacost then
+				return false
+			end
+		end
+		-- ➜ Mjolnir cd check
+		if item[7] then
+			if item[7].state == LuaEntityItem.STATE_READY and item[7]:CanBeCasted() and me.mana > skill[3].manacost then
+				return false
+			end
+		end
 		-- ➜ bkb cd check
 		if codes[3] and item[5] and item[5]:CanBeCasted() then
 			local heroes = entityList:GetEntities(function (v) return v.type==LuaEntity.TYPE_HERO and v.alive and v.visible and v.team~=me.team and me:GetDistance2D(v) <= 1200 end)
@@ -414,57 +456,15 @@ function IsAllCasted()
 				return false
 			end
 		end
-		-- ➜ Mjolnir cd check
-		if item[7] then
-			if item[7].state == LuaEntityItem.STATE_READY and item[7]:CanBeCasted() and me.mana > skill[3].manacost then
-				return false
-			end
-		end
-		-- ➜ Armlet cd check
-		if item[3] then
-			if item[3]:CanBeCasted() and not item[1] and SleepCheck("Armlet_use_delay") then
-				return false
-			end
-		end
-		-- ➜ Madness cd check
-		if item[10] then
-			if item[10]:CanBeCasted() and me.mana > skill[3].manacost then
-				return false
-			end
-		end
-		-- ➜ Abyssal cd check
-		if item[6] then
-			if item[6].state == LuaEntityItem.STATE_READY and item[6]:CanBeCasted() and me.mana > skill[3].manacost then
-				return false
-			end
-		end
-		-- ➜ Urn of Shadows cd check
-		if item[11] then
-			if item[11]:CanBeCasted() and me.mana > skill[3].manacost then
-				return false
-			end
-		end
-		-- ➜ Halberd cd check
-		if item[8] then
-			if item[8].state == LuaEntityItem.STATE_READY and item[8]:CanBeCasted() and me.mana > skill[3].manacost then
-				return false
-			end
-		end
-		-- ➜ Medallion of courage cd check
-		if item[9] then
-			if item[9].state == LuaEntityItem.STATE_READY and item[9]:CanBeCasted() and me.mana > skill[3].manacost then
-				return false
-			end
-		end
 		-- ➜ Blademail cd check
 		if item[4] then
 			if item[4]:CanBeCasted() and me.mana > skill[3].manacost then
 				return false
 			end
 		end
-		-- ➜ Satanic cd check
-		if item[12] then
-			if item[12].state == LuaEntityItem.STATE_READY and item[12]:CanBeCasted() and me.health < (me.maxHealth * 0.5) and me.mana > skill[3].manacost then
+		-- ➜ Abyssal cd check
+		if item[6] then
+			if item[6].state == LuaEntityItem.STATE_READY and item[6]:CanBeCasted() and me.mana > skill[3].manacost then
 				return false
 			end
 		end
