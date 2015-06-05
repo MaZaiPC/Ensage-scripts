@@ -1,4 +1,4 @@
---<<Legion commander V1.1A ✰ - by ☢bruninjaman☢ | Reworked by MaZaiPC>>--
+--<<Legion commander V1.1B ✰ - by ☢bruninjaman☢ | Reworked by MaZaiPC>>--
 --[[
 ☑ Reworked version.
 ☑ Some new functions and more performance.
@@ -10,7 +10,8 @@
 ☑ Show if enemy is on blink dagger range and your target.
 ********************************************************************************
 ♜ Change Log ♜
-➩ V1.1A - Sunday, May 31, 2015 - Added CD check (use duel only if all casted). Black King Bar now used wisely. Reworked by MaZaiPC, on all issues related with this version contact me.
+➩ V1.1B - Friday, June 5, 2015, [MaZaiPC] - Added new items to combo (Lotus Orb, Solar Crest). Added Smart BKB config. Some changes.
+➩ V1.1A - Sunday, May 31, 2015, [MaZaiPC] - Added CD check (use duel only if all casted). Black King Bar now used wisely. Reworked by MaZaiPC, on all issues related with this version contact me.
 ➩ V1.0E - Sunday, March 29, 2015 - Satanic use when your Health is < 50%. Fixed autoblink bug. Fixed no mana bug.
 ➩ V1.0D - Monday, March 9, 2015  - REMOVED AUTO DUEL(Because it isn't good.)  and OverHelmingOdds(Fix lag problem). Reworked itens Icons.
 ➩ V1.0C - Monday, March 2, 2015  - Increased speed of combo and Blink dagger will only be used if enemy is out of duel range. Added auto OverwhelmingOdds.
@@ -30,6 +31,8 @@ config = ScriptConfig.new()
 config:SetParameter("toggleKey", "F", config.TYPE_HOTKEY)
 config:SetParameter("BlinkComboKey", "D", config.TYPE_HOTKEY)
 config:SetParameter("StopComboKey", "S", config.TYPE_HOTKEY)
+config:SetParameter("SmartBKB", true)
+config:SetParameter("minEnemiesToSmartBKB", 3) -- Optimal for me, but u can change
 config:SetParameter("lowResolution", false)
 config:SetParameter("hidemessage", false)
 config:SetParameter("manacheck", true)
@@ -37,11 +40,13 @@ config:SetParameter("cdcheck", true)
 config:Load()
 
 local toggle = {
-			config.toggleKey,       -- ➜ toggle Key            --  toggle[1]
-			config.BlinkComboKey,   -- ➜ blink Combo Key       --  toggle[2]
-			config.StopComboKey,    -- ➜ Stop Combo Key        --  toggle[3]
-			config.lowResolution,   -- ➜ Low Resolution Option --  toggle[4]
-			config.hidemessage,     -- ➜ Hide TXT              --  toggle[5]
+			config.toggleKey,       	-- ➜ toggle Key            		--  toggle[1]
+			config.BlinkComboKey,   	-- ➜ blink Combo Key       		--  toggle[2]
+			config.StopComboKey,    	-- ➜ Stop Combo Key        		--  toggle[3]
+			config.lowResolution,   	-- ➜ Low Resolution Option 		--  toggle[4]
+			config.hidemessage,     	-- ➜ Hide TXT              		--  toggle[5]
+			config.SmartBKB,     		-- ➜ Smart BKB Option         		--  toggle[6]
+			config.minEnemiesToSmartBKB -- ➜ Minimum Enemies to Smart BKB	--  toggle[7]
 }
 
 -- Global Variables --
@@ -53,13 +58,14 @@ local manacheck = config.manacheck
 local cdcheck = config.cdcheck
 
 local codes = {
-	true,  -- codes[1]
-	true,  -- codes[2]
-	true,  -- codes[3]
-	false, -- codes[4]
-	false, -- codes[5]
-	false, -- codes[6]
+	true,   -- codes[1]
+	true,   -- codes[2]
+	true,   -- codes[3]
+	false,  -- codes[4]
+	false,  -- codes[5]
+	false,  -- codes[6]
 	false,  -- codes[7]
+	true,   -- codes[8]
 }
 -- ✖ Menu screen ✖ --
 local x,y            = 1150, 50
@@ -74,6 +80,9 @@ local ikillyou       = drawMgr:CreateText(-50,-50,-1,"Marked for death!",legion)
 local bkb3       = drawMgr:CreateRect(-17,-82,34,34,0xFFD700ff) bkb3.visible     = false
 local bkb1       = drawMgr:CreateRect(-16,-80,45,30,0x000000ff) bkb1.visible     = false
 local bkb2       = drawMgr:CreateRect(-16,-80,45,30,0x000000ff) bkb2.visible     = false
+local orb3       = drawMgr:CreateRect(-17,-82,34,34,0xFF66FFAA) orb3.visible     = false
+local orb1       = drawMgr:CreateRect(-16,-80,49,30,0x000000ff) orb1.visible     = false
+local orb2       = drawMgr:CreateRect(-16,-80,45,30,0x000000ff) orb2.visible     = false
 local blinkbg    = drawMgr:CreateRect(-19,-83,36,33,0x1C1C1Cff) blinkbg.visible  = false
 local blink      = drawMgr:CreateRect(-16,-80,43,27,0x000000ff) blink.visible    = false
 
@@ -105,28 +114,65 @@ function Key(msg,code)
 	me = entityList:GetMyHero()
 	if not me then return end
 	item = {
-		me:FindItem("item_black_king_bar") -- ➜ BKB item[1]
+		me:FindItem("item_black_king_bar"), -- ➜ BKB 	  	item[1]
+		me:FindItem("item_lotus_orb") 	    -- ➜ Lotus Orb	item[2]
 	}
 	skill = {
 		me:GetAbility(4)                   -- ➜ skill[1] -- DUEL
 	}
 	if client.chat or client.console or client.loading then return end
+	local shiftX = 0
+	
 	if item[1] and codes[1] and not toggle[5] then
 		statusText.text = "Black King Bar - Enable - (" .. string.char(toggle[1]) .. ")   Blink Combo - (" .. string.char(toggle[2]) .. ") "
 		codes[1] = false
 		codes[3] = true
 		-- ➜ BKB icon
+		if not item[2] then
+			shiftX = 0
+		else
+			shiftX = 22
+			orb1.entityPosition    = Vector(shiftX,0,me.healthbarOffset)
+			orb3.entityPosition    = Vector(shiftX,0,me.healthbarOffset)
+			orb2.entityPosition    = Vector(shiftX,0,me.healthbarOffset)
+			shiftX = -22
+		end
 		bkb1.entity            = me 
-		bkb1.entityPosition    = Vector(0,0,me.healthbarOffset)
+		bkb1.entityPosition    = Vector(shiftX,0,me.healthbarOffset)
 		bkb1.textureId         = drawMgr:GetTextureId("NyanUI/items/black_king_bar")
 		bkb1.visible           = true
 		bkb3.entity            = me 
-		bkb3.entityPosition    = Vector(0,0,me.healthbarOffset)
+		bkb3.entityPosition    = Vector(shiftX,0,me.healthbarOffset)
 		bkb3.visible           = true
 		bkb2.entity            = me 
-		bkb2.entityPosition    = Vector(0,0,me.healthbarOffset)
+		bkb2.entityPosition    = Vector(shiftX,0,me.healthbarOffset)
 		bkb2.textureId         = drawMgr:GetTextureId("NyanUI/items/translucent/black_king_bar_t25")
 	end
+	
+	if item[2] and codes[8] and not toggle[5] then
+		codes[8] = false
+		-- ➜ Lotus Orb icon
+		if not item[1] then
+			shiftX = 0
+		else
+			shiftX = -22
+			bkb1.entityPosition    = Vector(shiftX,0,me.healthbarOffset)
+			bkb3.entityPosition    = Vector(shiftX,0,me.healthbarOffset)
+			bkb2.entityPosition    = Vector(shiftX,0,me.healthbarOffset)
+			shiftX = 22
+		end
+		orb1.entity            = me 
+		orb1.entityPosition    = Vector(shiftX,0,me.healthbarOffset)
+		orb1.textureId         = drawMgr:GetTextureId("NyanUI/items/lotus_orb")
+		orb1.visible           = true
+		orb3.entity            = me 
+		orb3.entityPosition    = Vector(shiftX,0,me.healthbarOffset)
+		orb3.visible           = true
+		orb2.entity            = me 
+		orb2.entityPosition    = Vector(shiftX,0,me.healthbarOffset)
+		orb2.textureId         = drawMgr:GetTextureId("NyanUI/items/translucent/lotus_orb")
+	end
+	
 	if IsKeyDown(toggle[1]) and SleepCheck("CD_toggle2") and not toggle[5] then
 		codes[2] = not codes[2]
 		Sleep(500,"CD_toggle2")
@@ -190,6 +236,8 @@ function Main(tick)
 		me:FindItem("item_mask_of_madness"),                         -- ➜ item[10]
 		me:FindItem("item_urn_of_shadows"),                          -- ➜ item[11]
 		me:FindItem("item_satanic"),                                 -- ➜ item[12]
+		me:FindItem("item_lotus_orb"),                               -- ➜ item[13] NEW
+		me:FindItem("item_solar_crest")                              -- ➜ item[14] NEW
 	}
 	skill = {
 		me:GetAbility(1),                                            -- ➜ skill[1] -- Arrows
@@ -257,6 +305,9 @@ function BlinkCombo()
 		if item[7] and item[7].state == LuaEntityItem.STATE_READY and item[7]:CanBeCasted() then
 			manapool = manapool + item[7].manacost
 		end
+		if item[13] and item[13].state == LuaEntityItem.STATE_READY and item[13]:CanBeCasted() then -- Lotus ORB
+			manapool = manapool + item[13].manacost
+		end
 		if item[10] and item[10]:CanBeCasted() then
 			manapool = manapool + item[10].manacost
 		end
@@ -284,7 +335,9 @@ function BlinkCombo()
 		codes[6] = false
 	end
 	if me:CanCast() and not me:IsChanneling() and not codes[6] then
-		print("me.mana "..me.mana.." manapool "..manapool.." skill[3] "..skill[3].manacost)
+	 -- In my opinion, unnecessary information for typical player. You can undo this if you need.
+	 -- print("me.mana "..me.mana.." manapool "..manapool.." skill[3] "..skill[3].manacost)
+	 
 		-- ➜ Press the attack
 		if skill[2].level > 0 then
 			if skill[2]:CanBeCasted() and me.mana > manapool and me.mana > skill[3].manacost then
@@ -300,20 +353,27 @@ function BlinkCombo()
 		-- ➜ Check if bkb is active or inactive
 		if codes[3] and item[5] and item[5]:CanBeCasted() then
 			local heroes = entityList:GetEntities(function (v) return v.type==LuaEntity.TYPE_HERO and v.alive and v.visible and v.team~=me.team and me:GetDistance2D(v) <= 1200 end)
-			if #heroes == 3 then
-				me:SafeCastItem("item_black_king_bar")
-			elseif #heroes == 4 then
-				me:SafeCastItem("item_black_king_bar")
-			elseif #heroes == 5 then
-				me:SafeCastItem("item_black_king_bar")
+			if toggle[6] then
+				if #heroes >= toggle[7] and #heroes <= 5 then
+					me:SafeCastItem("item_black_king_bar")
+				end
+			else
+					me:SafeCastItem("item_black_king_bar")
 			end
-			Sleep(100+me:GetTurnTime(target)*600)
+			Sleep(100+me:GetTurnTime(target)*500)
 		end
 		-- ➜ Mjolnir item
 		if item[7] then
 			if item[7].state == LuaEntityItem.STATE_READY and item[7]:CanBeCasted() and me.mana > skill[3].manacost then
 				me:CastAbility(item[7],me)
-				Sleep(100+me:GetTurnTime(target)*600)
+				Sleep(100+me:GetTurnTime(target)*500)
+			end
+		end
+		-- ➜ Lotus Orb item
+		if item[13] then
+			if item[13].state == LuaEntityItem.STATE_READY and item[13]:CanBeCasted() and me.mana > skill[3].manacost then
+				me:CastAbility(item[13],me)
+				Sleep(100+me:GetTurnTime(target)*500)
 			end
 		end
 		-- ➜ Armlet item
@@ -328,7 +388,7 @@ function BlinkCombo()
 		if item[10] then
 			if item[10]:CanBeCasted() and me.mana > skill[3].manacost then
 				me:SafeCastItem("item_mask_of_madness")
-				Sleep(100+me:GetTurnTime(target)*600)
+				Sleep(100+me:GetTurnTime(target)*500)
 			end
 		end
 		-- ➜ Abyssal item
@@ -336,7 +396,7 @@ function BlinkCombo()
 			if item[6].state == LuaEntityItem.STATE_READY and item[6]:CanBeCasted() and me.mana > skill[3].manacost then
 				me:CastItem("item_abyssal_blade",target)
 				Sleep(100,"duel")
-				Sleep(100+me:GetTurnTime(target)*600)
+				Sleep(100+me:GetTurnTime(target)*500)
 			end
 		end
 		-- ➜ Urn of Shadows item
@@ -344,7 +404,7 @@ function BlinkCombo()
 			if item[11]:CanBeCasted() and me.mana > skill[3].manacost then
 				me:CastItem("item_urn_of_shadows",target)
 				Sleep(100,"duel")
-				Sleep(100+me:GetTurnTime(target)*600)
+				Sleep(100+me:GetTurnTime(target)*500)
 			end
 		end
 		-- ➜ Halberd item
@@ -352,7 +412,7 @@ function BlinkCombo()
 			if item[8].state == LuaEntityItem.STATE_READY and item[8]:CanBeCasted() and me.mana > skill[3].manacost then
 				me:CastItem("item_heavens_halberd",target)
 				Sleep(100,"duel")
-				Sleep(100+me:GetTurnTime(target)*600)
+				Sleep(100+me:GetTurnTime(target)*500)
 			end
 		end
 		-- ➜ Medallion of courage item
@@ -360,7 +420,15 @@ function BlinkCombo()
 			if item[9].state == LuaEntityItem.STATE_READY and item[9]:CanBeCasted() and me.mana > skill[3].manacost then
 				me:CastItem("item_medallion_of_courage",target)
 				Sleep(100,"duel")
-				Sleep(100+me:GetTurnTime(target)*600)
+				Sleep(100+me:GetTurnTime(target)*500)
+			end
+		end
+		-- ➜ Solar Crest item
+		if item[14] then
+			if item[14].state == LuaEntityItem.STATE_READY and item[14]:CanBeCasted() and me.mana > skill[3].manacost then
+				me:CastItem("item_solar_crest",target)
+				Sleep(100,"duel")
+				Sleep(100+me:GetTurnTime(target)*500)
 			end
 		end
 		-- ➜ Blademail item
@@ -415,6 +483,12 @@ function IsAllCasted()
 				return false
 			end
 		end
+		-- ➜ Solar Crest cd check
+		if item[9] then
+			if item[9].state == LuaEntityItem.STATE_READY and item[9]:CanBeCasted() and me.mana > skill[3].manacost then
+				return false
+			end
+		end
 		-- ➜ Halberd cd check
 		if item[8] then
 			if item[8].state == LuaEntityItem.STATE_READY and item[8]:CanBeCasted() and me.mana > skill[3].manacost then
@@ -445,16 +519,22 @@ function IsAllCasted()
 				return false
 			end
 		end
-		-- ➜ bkb cd check
-		if codes[3] and item[5] and item[5]:CanBeCasted() then
-			local heroes = entityList:GetEntities(function (v) return v.type==LuaEntity.TYPE_HERO and v.alive and v.visible and v.team~=me.team and me:GetDistance2D(v) <= 1200 end)
-			if #heroes == 3 then
-				return false
-			elseif #heroes == 4 then
-				return false
-			elseif #heroes == 5 then
+		-- ➜ Lotus Orb cd check
+		if item[13] then
+			if item[13].state == LuaEntityItem.STATE_READY and item[13]:CanBeCasted() and me.mana > skill[3].manacost then
 				return false
 			end
+		end
+		if codes[3] and item[5] and item[5]:CanBeCasted() then
+			local heroes = entityList:GetEntities(function (v) return v.type==LuaEntity.TYPE_HERO and v.alive and v.visible and v.team~=me.team and me:GetDistance2D(v) <= 1200 end)
+			if toggle[6] then
+				if #heroes >= toggle[7] and #heroes <= 5 then
+					return false
+				end
+			else
+					return false
+			end
+			Sleep(100+me:GetTurnTime(target)*500)
 		end
 		-- ➜ Blademail cd check
 		if item[4] then
