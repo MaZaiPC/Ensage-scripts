@@ -6,3 +6,4 @@ Slardar.lua               |							  |
 Tinker_Push_Tools.lua     | 
 Tusk.lua                  | 
 DooM.lua				  |
+Weaver.lua				  |
