@@ -344,7 +344,7 @@ function Key(msg,code)
 		else
 			SafeSwitch = true
 			SFS.text = "Fountain Safe Mode: ''"..string.char(config.FountainSafe).."'' Status: ON"
-			SFS.color = 0xFFFFFFAA
+			SFS.color = 0xFFFFFFFF
 		end
 	end
 end
