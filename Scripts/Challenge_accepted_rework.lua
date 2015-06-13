@@ -1,4 +1,4 @@
---<<Legion commander V1.1B ✰ - by ☢bruninjaman☢ | Reworked by MaZaiPC>>--
+--<<Updated by ☢bruninjaman☢ New Link: https://github.com/bruninjaman/ENSAGE-SCRIPT/blob/master/Scripts/Challenge_accepted.lua>>--
 --[[
 ☑ Reworked version.
 ☑ Some new functions and more performance.
@@ -10,6 +10,7 @@
 ☑ Show if enemy is on blink dagger range and your target.
 ********************************************************************************
 ♜ Change Log ♜
+➩ V1.1C - Thursday, June 4, 2015 - New official version is available. Please visit this link https://github.com/bruninjaman/ENSAGE-SCRIPT/blob/master/Scripts/Challenge_accepted.lua and download it.
 ➩ V1.1B - Friday, June 5, 2015, [MaZaiPC] - Added new items to combo (Lotus Orb, Solar Crest). Added Smart BKB config. Some changes.
 ➩ V1.1A - Sunday, May 31, 2015, [MaZaiPC] - Added CD check (use duel only if all casted). Black King Bar now used wisely. Reworked by MaZaiPC, on all issues related with this version contact me.
 ➩ V1.0E - Sunday, March 29, 2015 - Satanic use when your Health is < 50%. Fixed autoblink bug. Fixed no mana bug.
