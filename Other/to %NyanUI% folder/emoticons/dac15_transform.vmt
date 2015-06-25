@@ -1,6 +1,6 @@
 UnlitGeneric
 {
-$basetexture "NyanUI\emoticons\ti5_antimage"
+$basetexture "NyanUI\emoticons\dac15_transform"
 $vertexcolor 0
 $vertexalpha 1
 $no_fullbright 1
