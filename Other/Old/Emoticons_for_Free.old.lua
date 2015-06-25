@@ -1,3 +1,5 @@
+--<<IMPORTANT! Download texture https://mega.co.nz/#!qMMCUaJD!FaqONLMxfS1hHAxa8V-72g1CvTKjmM_-7f22RyrFPEQ and unpack to NyanUI/>>
+
 local rec = {}
 local rate = client.screenSize.x/1600
 local xx = 807.5
@@ -8,53 +10,53 @@ local sayTo = "say_team "
 
 local ShiftEnter = {16,13}
 --1
-rec[1] = drawMgr:CreateRect(5*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/macro/XY"))
-rec[2] = drawMgr:CreateRect(25*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/queenofpain"))
-rec[3] = drawMgr:CreateRect(45*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/slark"))
-rec[4] = drawMgr:CreateRect(65*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/puck"))
-rec[5] = drawMgr:CreateRect(85*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/furion"))
-rec[6] = drawMgr:CreateRect(105*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/shredder"))
-rec[7] = drawMgr:CreateRect(125*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/undying"))
-rec[8] = drawMgr:CreateRect(145*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/earth_spirit"))
+rec[1] = drawMgr:CreateRect(5*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/other/XY"))
+rec[2] = drawMgr:CreateRect(25*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/wink"))
+rec[3] = drawMgr:CreateRect(45*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/blush"))
+rec[4] = drawMgr:CreateRect(65*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/cheeky"))
+rec[5] = drawMgr:CreateRect(85*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/cool"))
+rec[6] = drawMgr:CreateRect(105*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/crazy"))
+rec[7] = drawMgr:CreateRect(125*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/cry"))
+rec[8] = drawMgr:CreateRect(145*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/disapprove"))
 rec[9] = drawMgr:CreateRect(165*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/minirunes/doubledamage"))
-rec[10] = drawMgr:CreateRect(185*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/windrunner"))
-rec[11] = drawMgr:CreateRect(205*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/lich"))
-rec[12] = drawMgr:CreateRect(225*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/minirunes/haste"))
-rec[13] = drawMgr:CreateRect(245*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/spirit_breaker"))
-rec[14] = drawMgr:CreateRect(265*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/sniper"))
-rec[15] = drawMgr:CreateRect(285*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/invoker"))
+rec[10] = drawMgr:CreateRect(185*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/facepalm"))
+rec[11] = drawMgr:CreateRect(205*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/happytears"))
+rec[12] = drawMgr:CreateRect(225*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/haste"))
+rec[13] = drawMgr:CreateRect(245*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/hex"))
+rec[14] = drawMgr:CreateRect(265*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/highfive"))
+rec[15] = drawMgr:CreateRect(285*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/huh"))
 --2
-rec[16] = drawMgr:CreateRect(5*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/drow_ranger"))
+rec[16] = drawMgr:CreateRect(5*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/hush"))
 rec[17] = drawMgr:CreateRect(25*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/minirunes/illusion"))
 rec[18] = drawMgr:CreateRect(45*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/minirunes/invis"))
-rec[19] = drawMgr:CreateRect(65*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/antimage"))
-rec[20] = drawMgr:CreateRect(85*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/axe"))
+rec[19] = drawMgr:CreateRect(65*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/ti5_antimage"))
+rec[20] = drawMgr:CreateRect(85*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/rage"))
 rec[21] = drawMgr:CreateRect(105*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/minirunes/regen"))
-rec[22] = drawMgr:CreateRect(125*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/death_prophet"))
-rec[23] = drawMgr:CreateRect(145*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/pudge"))
-rec[24] = drawMgr:CreateRect(165*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/keeper_of_the_light"))
-rec[25] = drawMgr:CreateRect(185*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/crystal_maiden"))
-rec[26] = drawMgr:CreateRect(205*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/meepo"))
-rec[27] = drawMgr:CreateRect(225*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/lich"))
-rec[28] = drawMgr:CreateRect(245*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/kunkka"))
-rec[29] = drawMgr:CreateRect(265*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/alchemist"))
-rec[30] = drawMgr:CreateRect(285*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/enchantress"))
+rec[22] = drawMgr:CreateRect(125*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/sad"))
+rec[23] = drawMgr:CreateRect(145*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/ti5_pudge_troll"))
+rec[24] = drawMgr:CreateRect(165*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/sleeping"))
+rec[25] = drawMgr:CreateRect(185*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/smile"))
+rec[26] = drawMgr:CreateRect(205*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/surprise"))
+rec[27] = drawMgr:CreateRect(225*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/bts3_bristle"))
+rec[28] = drawMgr:CreateRect(245*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/burn"))
+rec[29] = drawMgr:CreateRect(265*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/hide"))
+rec[30] = drawMgr:CreateRect(285*rate,80*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/iceburn"))
 --3
-rec[31] = drawMgr:CreateRect(5*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/axe"))
-rec[32] = drawMgr:CreateRect(25*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/techies"))
-rec[33] = drawMgr:CreateRect(45*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/riki"))
-rec[34] = drawMgr:CreateRect(65*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/sven"))
-rec[35] = drawMgr:CreateRect(85*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/sniper"))
-rec[36] = drawMgr:CreateRect(105*rate,100*rate,30*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/items/heart"))
-rec[37] = drawMgr:CreateRect(125*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/ursa"))
-rec[38] = drawMgr:CreateRect(145*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/phantom_assassin"))
-rec[39] = drawMgr:CreateRect(165*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/minirunes/bounty"))
-rec[40] = drawMgr:CreateRect(185*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/lina"))
-rec[41] = drawMgr:CreateRect(205*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/zuus"))
-rec[42] = drawMgr:CreateRect(225*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/roshan"))
-rec[43] = drawMgr:CreateRect(245*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/tidehunter"))
-rec[44] = drawMgr:CreateRect(265*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/miniheroes/legion_commander"))
-rec[45] = drawMgr:CreateRect(285*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/other/courier"))
+rec[31] = drawMgr:CreateRect(5*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/tears"))
+rec[32] = drawMgr:CreateRect(25*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/techies"))
+rec[33] = drawMgr:CreateRect(45*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/dac15_fade"))
+rec[34] = drawMgr:CreateRect(65*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/goodjob"))
+rec[35] = drawMgr:CreateRect(85*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/headshot"))
+rec[36] = drawMgr:CreateRect(105*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/heart"))
+rec[37] = drawMgr:CreateRect(125*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/horse"))
+rec[38] = drawMgr:CreateRect(145*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/grave"))
+rec[39] = drawMgr:CreateRect(165*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/ti4_gold"))
+rec[40] = drawMgr:CreateRect(185*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/fire"))
+rec[41] = drawMgr:CreateRect(205*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/bts3_merlini"))
+rec[42] = drawMgr:CreateRect(225*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/bts3_rosh"))
+rec[43] = drawMgr:CreateRect(245*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/dac15_water"))
+rec[44] = drawMgr:CreateRect(265*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/dac15_angry"))
+rec[45] = drawMgr:CreateRect(285*rate,100*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/emoticons/puppy"))
 rec[46] = drawMgr:CreateRect(5*rate,60*rate,20*rate,20*rate,0x000000FF,drawMgr:GetTextureId("NyanUI/other/Passive_Deny"))
 
 rec[#rec+1] = drawMgr:CreateRect(5*rate,60*rate,300*rate,60*rate,0x0000070)
@@ -130,7 +132,7 @@ function Key(msg,code)
                            elseif IsMouseOn(rec[18]) then
                             client:ExecuteCmd(sayTo.."") --invisibility
                            elseif IsMouseOn(rec[19]) then
-                            client:ExecuteCmd(sayTo.."") --laugh
+                            client:ExecuteCmd(sayTo.."") --ti5_antimage
                            elseif IsMouseOn(rec[20]) then
                             client:ExecuteCmd(sayTo.."") --rage
                            elseif IsMouseOn(rec[21]) then
@@ -138,7 +140,7 @@ function Key(msg,code)
                            elseif IsMouseOn(rec[22]) then
                             client:ExecuteCmd(sayTo.."") --sad
                            elseif IsMouseOn(rec[23]) then
-                            client:ExecuteCmd(sayTo.."") --sick
+                            client:ExecuteCmd(sayTo.."") --ti5_pudge_troll
                            elseif IsMouseOn(rec[24]) then
                             client:ExecuteCmd(sayTo.."") --sleeping
                            elseif IsMouseOn(rec[25]) then
@@ -146,7 +148,7 @@ function Key(msg,code)
                            elseif IsMouseOn(rec[26]) then
                             client:ExecuteCmd(sayTo.."") --surprise 
                            elseif IsMouseOn(rec[27]) then
-                            client:ExecuteCmd(sayTo.."") --aaaah
+                            client:ExecuteCmd(sayTo.."") --bts3_bristle
                            elseif IsMouseOn(rec[28]) then
                             client:ExecuteCmd(sayTo.."") --burn
                            elseif IsMouseOn(rec[29]) then
@@ -157,7 +159,7 @@ function Key(msg,code)
                            elseif IsMouseOn(rec[31]) then
                             client:ExecuteCmd(sayTo.."") --tears
                            elseif IsMouseOn(rec[32]) then
-                            client:ExecuteCmd(sayTo.."") --techies
+                            client:ExecuteCmd(sayTo.."") --techies
                            elseif IsMouseOn(rec[33]) then
                             client:ExecuteCmd(sayTo.."") --dac15_fade
                            elseif IsMouseOn(rec[34]) then
@@ -171,9 +173,9 @@ function Key(msg,code)
                            elseif IsMouseOn(rec[38]) then
                             client:ExecuteCmd(sayTo.."") --grave
                            elseif IsMouseOn(rec[39]) then
-                            client:ExecuteCmd(sayTo.."") --ti4gold
+                            client:ExecuteCmd(sayTo.."") --ti4_gold
                            elseif IsMouseOn(rec[40]) then
-                            client:ExecuteCmd(sayTo.."") --bts_lina
+                            client:ExecuteCmd(sayTo.."") --fire
                            elseif IsMouseOn(rec[41]) then
                             client:ExecuteCmd(sayTo.."") --bts_merlini
                            elseif IsMouseOn(rec[42]) then
@@ -183,7 +185,7 @@ function Key(msg,code)
                            elseif IsMouseOn(rec[44]) then
                             client:ExecuteCmd(sayTo.."") --dac15_angry
                            elseif IsMouseOn(rec[45]) then
-                            client:ExecuteCmd(sayTo.."") --Puppy
+                            client:ExecuteCmd(sayTo.."") --puppy
                            elseif IsMouseOn(rec[46]) then
                            end
                           end
@@ -196,8 +198,7 @@ function Key(msg,code)
 						   rec[46].textureId = drawMgr:GetTextureId("NyanUI/other/Passive_Deny")
 						   end
                           end
-                         end
-                            
+						  end
 end
 
 function IsMouseOn(obj)
