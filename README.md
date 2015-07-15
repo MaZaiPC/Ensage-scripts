@@ -39,6 +39,7 @@ What you may find in my repository:
 
 ##### <a name="reworkedScripts"></a> Reworked
 [Visage_Helper_Rework.lua]		(https://github.com/MaZaiPC/Ensage-scripts/blob/master/Scripts/Visage_Helper_Rework.lua "Fixed attempts to false cast.")
+
 [Challenge_accepted_rework.lua]	(https://github.com/bruninjaman/ENSAGE-SCRIPT/blob/master/Scripts/Challenge_accepted.lua "I kept this script updated (in absence of the main developer). Now he back, so I stopped updates. Now in my repo old ver, this link will redirect you to download page of the official (updated) version.")
 
 ##### <a name="extensions"></a> Extensions
