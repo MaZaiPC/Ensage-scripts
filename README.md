@@ -46,6 +46,7 @@ Note: Scripts classified as extensions desirable to use with related scripts tog
 ##### <a name="indevScripts"></a> Dev queue of scripts
 Note: Work on common scripts and big scripts had been doing at same time.
 Freezed scripts do not take part in the queue due to the difficulties associated with them.
+
 Сommon scripts:			      	 | Big scripts:					| Freezed (problems with creating)
 :-----------               	  	 | :-----------					| :-----------
 1. Pudge_Escape.lua			  	 | 1. MIO_ComboSkills.lua	    | Tinker_Push_Bot_WIP.lua
