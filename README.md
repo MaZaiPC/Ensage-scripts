@@ -11,7 +11,8 @@ Timbersaw_Simple_Combo.lua |
 
 BETA test:				   | Dev queue:
 :-----------               | :-----------
-TS_Combo_Extension.lua     | Tinker_Push_Bot_WIP.lua
+TS_Combo_Extension.lua     | MIO_ComboSkills.lua (big work)
+						   | Tinker_Push_Bot_WIP.lua
 						   | TS_Combo_Extension.lua (Updt)
 						   | Pudge_Escape.lua
 						   | Emoticons_for_Free.lua (Updt)
