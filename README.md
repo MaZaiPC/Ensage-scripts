@@ -43,12 +43,12 @@ What you may find in my repository:
 
 ##### <a name="extensions"></a> Extensions
 Note: Scripts classified as extensions desirable to use with related scripts together!
-[TS_Combo_Extension.lua]		(http://example.com/ "Extension for script Timbersaw_Simple_Combo.lua")
+[TS_Combo_Extension.lua]		(https://github.com/MaZaiPC/Ensage-scripts/blob/master/Scripts/TS_Combo_Extension.lua "Extension for script Timbersaw_Simple_Combo.lua")
 
 <a name="development"></a> Development
 --------------------------  
 ##### <a name="betaScripts"></a> BETA test scripts
-[TS_Combo_Extension.lua]		(http://example.com/ "Extension for script Timbersaw_Simple_Combo.lua")
+[TS_Combo_Extension.lua]		(https://github.com/MaZaiPC/Ensage-scripts/blob/master/Scripts/TS_Combo_Extension.lua "Extension for script Timbersaw_Simple_Combo.lua")
 
 ##### <a name="indevScripts"></a> Dev queue of scripts
 Note: Work on common scripts and big scripts had been doing at same time.
@@ -57,8 +57,8 @@ Freezed scripts do not take part in the queue due to the difficulties associated
 Сommon scripts:			      	 | Big scripts:					| Freezed (problems with creating)
 :-----------               	  	 | :-----------					| :-----------
 1.Pudge_Escape.lua			  	 | 1.MIO_ComboSkills.lua	    | Tinker_Push_Bot_WIP.lua
-2.Emoticons_for_Free.lua (Updt) |
-3.TS_Combo_Extension.lua (Updt) | 
-4.Weaver.lua (Updt)		     | 
+2.Emoticons_for_Free.lua (Updt)	 |
+3.TS_Combo_Extension.lua (Updt)	 | 
+4.Weaver.lua (Updt)		    	 | 
 								 | 
 								 | 
