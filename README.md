@@ -4,7 +4,7 @@ Welcome to MaZaiPC's repo!
 What you may find in my repository:
  + [Lua scripts for Dota 2.]										(#luaScripts);
  + [Code completion for Dota 2 scripts development.]				(#development);
-
+ 
 #### Repo map:
 1. List of scripts:
  + [For heroes]				(#heroScripts);
