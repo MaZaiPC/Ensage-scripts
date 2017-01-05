@@ -1,5 +1,8 @@
-Welcome to MaZaiPC's repo!
-=========================
+# Lua Scripts for Ensage
+
+<a href="https://github.com/MaZaiPC/arithmetic-trainer-net"><img
+  src="http://i.imgur.com/JMdoCJi.png" alt="Repository Type"
+  width="80" height="80" align="right"></a>
 
 What you may find in my repository:
  + [Lua scripts for Dota 2.]										(#luaScripts);
