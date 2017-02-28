@@ -1,4 +1,4 @@
---<<Weaver script by MaZaiPC>>
+--<<Weaver script by Moreniell>>
 
 require("libs.ScriptConfig")
 require("libs.Utils")

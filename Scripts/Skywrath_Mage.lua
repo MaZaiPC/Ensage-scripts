@@ -1,4 +1,4 @@
---<<Skywrath Mage script by MaZaiPC (AILEN's core)>>
+--<<Skywrath Mage script by Moreniell (AILEN's core)>>
 require("libs.Utils")
 require("libs.TargetFind")
 require("libs.ScriptConfig")

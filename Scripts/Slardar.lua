@@ -1,4 +1,4 @@
---<<Slardar script by MaZaiPC (AILEN's core)>>
+--<<Slardar script by Moreniell (AILEN's core)>>
 
 require("libs.ScriptConfig")
 require("libs.Utils")

@@ -1,4 +1,4 @@
---<<DooM script by MaZaiPC (AILEN's core)>>
+--<<DooM script by Moreniell (AILEN's core)>>
 
 require("libs.ScriptConfig")
 require("libs.Utils")

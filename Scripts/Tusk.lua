@@ -1,4 +1,4 @@
---<<Tusk script by MaZaiPC (AILEN's core)>>
+--<<Tusk script by Moreniell (AILEN's core)>>
 
 require("libs.ScriptConfig")
 require("libs.Utils")

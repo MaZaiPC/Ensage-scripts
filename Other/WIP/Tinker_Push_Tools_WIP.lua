@@ -1,7 +1,7 @@
 --<<Tinker Push Tools>>
 --[[
 		--------------------------------------
-		|    Tinker Push Tools by MaZaiPC    |
+		|    Tinker Push Tools by Moreniell    |
 		--------------------------------------
 		=========== Version 0.5 ===========
 		 

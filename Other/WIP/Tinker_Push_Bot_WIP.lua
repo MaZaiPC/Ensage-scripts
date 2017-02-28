@@ -1,7 +1,7 @@
 --<<Tinker Push Bot WIP>>
 --[[
 		-------------------------------------
-		|   TinkerPush Bot WIP by MaZaiPC   |
+		|   TinkerPush Bot WIP by Moreniell   |
 		-------------------------------------
 		=========== Version 0.3 Indev ===========
 		 
